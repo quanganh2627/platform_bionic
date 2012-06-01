@@ -1331,7 +1331,8 @@ static int reloc_library(soinfo *si, Elf32_Rel *rel, unsigned count)
                 case R_386_JUMP_SLOT:
                 case R_386_GLOB_DAT:
                 case R_386_32:
-                case R_386_RELATIVE:    /* Dont' care. */
+                case R_386_RELATIVE:    /* Don't care. */
+                case R_386_NONE:        /* Don't care. */
 #endif /* ANDROID_*_LINKER */
                     /* sym_addr was initialized to be zero above or relocation
                        code below does not care about value of sym_addr.
@@ -1454,6 +1455,8 @@ static int reloc_library(soinfo *si, Elf32_Rel *rel, unsigned count)
                        "+%08x (%08x - %08x) %s\n", pid, reloc,
                        (sym_addr - reloc), sym_addr, reloc, sym_name);
             *((unsigned *)reloc) += (unsigned)(sym_addr - reloc);
+            break;
+        case R_386_NONE:
             break;
 #endif /* ANDROID_X86_LINKER */
 
