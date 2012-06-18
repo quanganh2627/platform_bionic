@@ -107,6 +107,8 @@ libc_common_src_files := \
 	stdio/fwrite.c \
 	stdio/getc.c \
 	stdio/getchar.c \
+	stdio/getdelim.c \
+	stdio/getline.c \
 	stdio/gets.c \
 	stdio/makebuf.c \
 	stdio/mktemp.c \
