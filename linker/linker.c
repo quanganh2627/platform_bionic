@@ -2034,6 +2034,7 @@ static unsigned __linker_init_post_relocation(unsigned **elfdata)
     struct link_map * map;
     const char *ldpath_env = NULL;
     const char *ldpreload_env = NULL;
+    int i;
 
     /* NOTE: we store the elfdata pointer on a special location
      *       of the temporary TLS area in order to pass it to
@@ -2172,6 +2173,9 @@ sanitize:
         write(2, errmsg, sizeof(errmsg));
         exit(-1);
     }
+
+    for (i = 0; preloads[i]; i++)
+        call_constructors_recursive(preloads[i]);
 
     call_constructors_recursive(si);
 
