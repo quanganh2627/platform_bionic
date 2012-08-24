@@ -24,6 +24,7 @@
 #define __NR_getgroups32                  (__NR_SYSCALL_BASE + 205)
 #define __NR_getpgid                      (__NR_SYSCALL_BASE + 132)
 #define __NR_getppid                      (__NR_SYSCALL_BASE + 64)
+#define __NR_getsid                       (__NR_SYSCALL_BASE + 147)
 #define __NR_setsid                       (__NR_SYSCALL_BASE + 66)
 #define __NR_setgid32                     (__NR_SYSCALL_BASE + 214)
 #define __NR_setreuid32                   (__NR_SYSCALL_BASE + 203)

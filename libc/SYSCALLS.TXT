@@ -54,6 +54,7 @@ ssize_t readahead(int, off64_t, size_t)     225
 int     getgroups:getgroups32(int, gid_t *)    205
 pid_t   getpgid(pid_t)             132
 pid_t   getppid()                  64
+pid_t   getsid(pid_t)             147
 pid_t   setsid()                   66
 int     setgid:setgid32(gid_t)     214
 int     seteuid:seteuid32(uid_t)   stub
