@@ -147,7 +147,6 @@
 #define __NR_syslog                       (__NR_SYSCALL_BASE + 103)
 #define __NR_sysinfo                      (__NR_SYSCALL_BASE + 116)
 #define __NR_personality                  (__NR_SYSCALL_BASE + 136)
-#define __NR_perf_event_open              (__NR_SYSCALL_BASE + 364)
 #define __NR_futex                        (__NR_SYSCALL_BASE + 240)
 #define __NR_poll                         (__NR_SYSCALL_BASE + 168)
 
@@ -198,6 +197,7 @@
 #define __NR_getcpu                       (__NR_SYSCALL_BASE + 345)
 #define __NR_ioprio_set                   (__NR_SYSCALL_BASE + 314)
 #define __NR_ioprio_get                   (__NR_SYSCALL_BASE + 315)
+#define __NR_perf_event_open              (__NR_SYSCALL_BASE + 364)
 #define __NR_epoll_create                 (__NR_SYSCALL_BASE + 250)
 #define __NR_epoll_ctl                    (__NR_SYSCALL_BASE + 251)
 #define __NR_epoll_wait                   (__NR_SYSCALL_BASE + 252)
@@ -246,6 +246,7 @@
 #define __NR_getcpu                       (__NR_SYSCALL_BASE + 318)
 #define __NR_ioprio_set                   (__NR_SYSCALL_BASE + 289)
 #define __NR_ioprio_get                   (__NR_SYSCALL_BASE + 290)
+#define __NR_perf_event_open              (__NR_SYSCALL_BASE + 336)
 #define __NR_epoll_create                 (__NR_SYSCALL_BASE + 254)
 #define __NR_epoll_ctl                    (__NR_SYSCALL_BASE + 255)
 #define __NR_epoll_wait                   (__NR_SYSCALL_BASE + 256)
