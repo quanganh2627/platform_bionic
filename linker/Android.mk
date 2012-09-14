@@ -33,6 +33,7 @@ LOCAL_CFLAGS += -DANDROID_ARM_LINKER
 else
   ifeq ($(TARGET_ARCH),x86)
     LOCAL_CFLAGS += -DANDROID_X86_LINKER
+    LOCAL_CFLAGS += -I$(LOCAL_PATH)/../libc/arch-x86/bionic
   endif
 endif
 
