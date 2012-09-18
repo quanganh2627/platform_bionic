@@ -65,7 +65,6 @@ libc_common_src_files := \
 	unistd/sigwait.c \
 	unistd/sleep.c \
 	unistd/statfs.c \
-	unistd/strsignal.c \
 	unistd/syslog.c \
 	unistd/system.c \
 	unistd/tcgetpgrp.c \
@@ -192,8 +191,6 @@ libc_common_src_files := \
 	string/strcoll.c \
 	string/strcspn.c \
 	string/strdup.c \
-	string/strerror.c \
-	string/strerror_r.c \
 	string/strlcat.c \
 	string/strlcpy.c \
 	string/strncat.c \
@@ -282,6 +279,9 @@ libc_common_src_files := \
 	bionic/semaphore.c \
 	bionic/sha1.c \
 	bionic/ssp.c \
+	bionic/strerror.cpp \
+	bionic/strerror_r.cpp \
+	bionic/strsignal.cpp \
 	bionic/stubs.c \
 	bionic/system_properties.c \
 	bionic/tdelete.c \
