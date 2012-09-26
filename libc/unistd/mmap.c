@@ -35,6 +35,7 @@ extern void*  __mmap2(void*, size_t, int, int, int, size_t);
 void* mmap(void *addr, size_t size, int prot, int flags, int fd, long offset)
 {
     void *ret;
+    int saved_errno;
 
     if (offset & ((1UL << MMAP2_SHIFT)-1)) {
         errno = EINVAL;
@@ -43,8 +44,10 @@ void* mmap(void *addr, size_t size, int prot, int flags, int fd, long offset)
 
     ret = __mmap2(addr, size, prot, flags, fd, (size_t)offset >> MMAP2_SHIFT);
 
-    if (ret && (flags & (MAP_PRIVATE | MAP_ANONYMOUS)))
-	    madvise(ret, size, MADV_MERGEABLE);
-
+    if (ret && (flags & (MAP_PRIVATE | MAP_ANONYMOUS))) {
+        saved_errno = errno;
+        madvise(ret, size, MADV_MERGEABLE);
+        errno = saved_errno;
+    }
     return ret;
 }
