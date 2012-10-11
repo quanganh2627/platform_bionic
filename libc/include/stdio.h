@@ -50,6 +50,7 @@
 #include <stddef.h>
 
 #include <stddef.h>
+#include <stdint.h>
 
 #if __BSD_VISIBLE || __POSIX_VISIBLE || __XPG_VISIBLE
 #include <sys/types.h>	/* XXX should be removed */
