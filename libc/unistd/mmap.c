@@ -51,3 +51,24 @@ void* mmap(void *addr, size_t size, int prot, int flags, int fd, long offset)
     }
     return ret;
 }
+
+void* mmap64(void *addr, size_t size, int prot, int flags, int fd, off64_t offset)
+{
+    void *ret;
+    int saved_errno;
+
+    if (offset & ((1UL << MMAP2_SHIFT)-1)) {
+        errno = EINVAL;
+        return MAP_FAILED;
+    }
+
+    // type-casting offset to uint64_t so shifting works correctly
+    ret = __mmap2(addr, size, prot, flags, fd, (uint64_t)offset >> MMAP2_SHIFT);
+
+    if (ret && (flags & (MAP_PRIVATE | MAP_ANONYMOUS))) {
+        saved_errno = errno;
+        madvise(ret, size, MADV_MERGEABLE);
+        errno = saved_errno;
+    }
+    return ret;
+}
