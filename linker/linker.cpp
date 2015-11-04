@@ -1353,10 +1353,17 @@ static bool soinfo_link_image(soinfo* si) {
             si->symtab = (Elf32_Sym *) (base + d->d_un.d_ptr);
             break;
         case DT_PLTREL:
-            if (d->d_un.d_val != DT_REL) {
-                DL_ERR("unsupported DT_RELA in \"%s\"", si->name);
-                return false;
-            }
+#if defined(USE_RELA)
+        if (d->d_un.d_val != DT_RELA) {
+          DL_ERR("unsupported DT_PLTREL in \"%s\"; expected DT_RELA", name);
+          return false;
+        }
+#else
+        if (d->d_un.d_val != DT_REL) {
+          DL_ERR("unsupported DT_PLTREL in \"%s\"; expected DT_REL", name);
+          return false;
+        }
+#endif
             break;
         case DT_JMPREL:
             si->plt_rel = (Elf32_Rel*) (base + d->d_un.d_ptr);
@@ -1462,6 +1469,11 @@ static bool soinfo_link_image(soinfo* si) {
         case DT_MIPS_GOTSYM:
             si->mips_gotsym = d->d_un.d_val;
             break;
+        case DT_VERSYM:
+      case DT_VERDEF:
+      case DT_VERDEFNUM:
+        // Ignore: bionic does not support symbol versioning...
+        break;
 
         default:
             DEBUG("Unused DT entry: type 0x%08x arg 0x%08x", d->d_tag, d->d_un.d_val);
